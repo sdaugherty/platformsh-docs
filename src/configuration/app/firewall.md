@@ -48,15 +48,15 @@ For example, `1.2.3.4/8` will match any IP address whose first 8 bits match `1.2
 
 [IP Address Guide](https://ipaddressguide.com/cidr) has a useful CIDR format calculator.
 
-If no `ports` property is specified, requests to any port on the specified IP addresses are permitted unless restricted by another firewall rule.
+If no `ports` property is specified, requests to any port on the specified IP addresses are permitted.
 
 ### `ports`
 
-To restrict a rule to only allow requests to certain ports as well, list the ports in this property.  For example, `[80, 443]` will only allow requests to the specified IPs on ports 80 and 443 (typically HTTP and HTTPS, respectively).  Requests to any other port will be blocked.
+This property is an array of ports in the range 1 to 65535 that are allowed.  For example, `[80, 443]` will only allow requests to the specified IPs on ports 80 and 443 (typically HTTP and HTTPS, respectively).  Requests to any other port will be blocked.
 
-If not specified, requests to a given IP may be to any port.  Legal values are integers from 1 to 65535.
+If not specified, requests to a given IP may be to any port.
 
-If no `ips` property is specified, requests to any IP address are permitted on the specified port(s) unless restricted by another firewall rule.
+If no `ips` property is specified, requests to any IP address are permitted on the specified port(s).
 
 ## Multiple rules
 

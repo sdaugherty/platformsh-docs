@@ -6,7 +6,7 @@ This setting has no impact on inbound requests to your application.  For that, u
 
 ## Syntax
 
-The `firewall` property defines one or more whitelist entries for outbound requests.  It's basic syntax is as follows:
+The `firewall` property defines one or more whitelist entries for outbound requests.  Its basic syntax is as follows:
 
 ```yaml
 firewall:
@@ -34,11 +34,11 @@ That is, all outbound TCP traffic is allowed on all ports (aside from port 25, w
 
 ## Options
 
-Each firewall rule has three configuration values.
+Each firewall rule has three configuration values.  At least one of `ips` or `ports` is required, but both may also be specified.
 
 ### `protocol`
 
-The protocol value is always `tcp`.  Outbound UDP request are not allowed anyway.  As a result this property can be omitted in virtually every circumstance.
+The default and only legal value for the protocol is `tcp`.  Outbound UDP ports are not allowed.  As a result this property can be omitted in virtually every circumstance.
 
 ### `ips`
 
@@ -48,13 +48,31 @@ For example, `1.2.3.4/8` will match any IP address whose first 8 bits match `1.2
 
 [IP Address Guide](https://ipaddressguide.com/cidr) has a useful CIDR format calculator.
 
-This is the only required property.
+If no `ports` property is specified, requests to any port on the specified IP addresses are permitted unless restricted by another firewall rule.
 
-### `port`
+### `ports`
 
 To restrict a rule to only allow requests to certain ports as well, list the ports in this property.  For example, `[80, 443]` will only allow requests to the specified IPs on ports 80 and 443 (typically HTTP and HTTPS, respectively).  Requests to any other port will be blocked.
 
 If not specified, requests to a given IP may be to any port.  Legal values are integers from 1 to 65535.
+
+If no `ips` property is specified, requests to any IP address are permitted on the specified port(s) unless restricted by another firewall rule.
+
+## Multiple rules
+
+It is possible to define an arbitrary number of whitelist firewall rules, as in the example above.  If multiple rules are specified, a given outbound request will be allowed if it matches ANY of the defined rules.
+
+That means that, for this configuration:
+
+```yaml
+firewall:
+  outbound:
+    - ips: ["1.2.3.4/32"]
+      ports: [443]
+    - ports: [80]
+```
+
+Requests to port 80 on any IP will be allowed, and requests to 1.2.3.4 on either port 80 or 443 will be allowed, even though the first rule only lists port 443.
 
 ## Usage considerations
 

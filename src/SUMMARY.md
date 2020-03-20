@@ -83,6 +83,7 @@
   * [Web configuration](configuration/app/web.md)
   * [Worker configuration](configuration/app/workers.md)
   * [Cron and scheduled tasks](configuration/app/cron.md)
+  * [Outbound Firewall](configuration/app/firewall.md)
   * [Multiple Applications](configuration/app/multi-app.md)
   * [Source Operations](configuration/app/source-operations.md)
   * [Upgrading](configuration/app/upgrading.md)

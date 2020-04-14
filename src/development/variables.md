@@ -243,7 +243,7 @@ Check the individual documentation pages for accessing environment variables for
 
 export DB_USER=echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".database[0].username"
 
-{% language="PHP", type="php" -%}
+{%- language name="PHP", type="php" -%}
 <?php
 
 // A simple variable.

@@ -241,7 +241,7 @@ Check the individual documentation pages for accessing environment variables for
 
 {% codetabs name="Shell", type="bash" -%}
 
-export DB_USER=echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".database[0].username"
+export DB_USER="$(echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq -r '.database[0].username')"
 
 {%- language name="PHP", type="php" -%}
 <?php

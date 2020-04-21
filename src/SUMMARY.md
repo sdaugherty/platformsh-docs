@@ -154,6 +154,7 @@
 * [Users](administration/users.md)
 * [Backup and restore](administration/backup-and-restore.md)
 * [External integrations](administration/integrations.md)
+  * [Activity scripts](administration/integrations/activity-scripts.md)
   * [Bitbucket](administration/integrations/bitbucket.md)
   * [Blackfire](administration/integrations/blackfire.md)
   * [Health notifications](administration/integrations/notifications.md)

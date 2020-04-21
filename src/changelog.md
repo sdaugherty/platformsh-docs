@@ -4,6 +4,7 @@
 
 * **April 2020**
   * We now offer [Xdebug on PHP](/languages/php/xdebug.md) containers.
+  * Custom [activity scripts](/administration/integrations/activity-scripts.md) are now available, in alpha.
 
 * **March 2020**
   * Go 1.14: We now support [Go 1.14](/languages/go.md).

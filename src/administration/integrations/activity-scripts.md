@@ -1,10 +1,6 @@
-#  Custom activity scripts (Alpha)
+#  Custom activity scripts
 
 Platform.sh supports custom scripts that can fire in response to any activity.  These scripts allow you to take arbitrary actions in response to actions in your project, such as when it deploys, when a new branch is created, etc.
-
-> **note
->
-> Activity scripts are currently in alpha stage.  The Javascript API itself is unlikely to change, but the workflow is still in flux and no part of it is guaranteed to not change.  Please do not rely on this feature for mission-critical behavior.
 
 Activity scripts are written in a scope-limited version of Javascript ES5.  That means they do not support newer ES6 and later features such as classes, nor do they support installing additional packages.  A series of utility functions you can reuse are included below.
 
@@ -212,7 +208,7 @@ See the Mozilla Dev Network link above for more `fetch()` options.
 
 ## Cryptographic API
 
-A minimalize cryptographic API is also available to activity scripts.  Its main use is for signing requests to 3rd party APIs.
+A minimalist cryptographic API is also available to activity scripts.  Its main use is for signing requests to 3rd party APIs.
 
 ### crypto.createHmac(): create an HMAC signature
 
@@ -301,7 +297,7 @@ function variables() {
  * whose upstream is a given application name.  To retrieve routes that point to the
  * current application where the code is being run, use:
  *
- * routes =  config.getUpstreamRoutes(config.applicationName);
+ * routes =  getUpstreamRoutes(applicationName);
  *
  * @param {string|null} appName
  *   The name of the upstream app on which to filter, if any.
